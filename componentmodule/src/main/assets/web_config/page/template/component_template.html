@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>摸板页面</title>
+    <meta name="viewport" content="width=device-width,height=device-height,initial-scale=1.0,
+     minimum-scale=1.0,maximum-scale=1.0, user-scalable=no">
+    <!--必须引入的组件-->
+    <script src="../../js/bridgeproxy.js"></script>
+    <link rel="stylesheet" href="../../css/reset.css" type="text/css">
+    <!--jquery 库-->
+    <script src="../../js/jquery-3.2.1.min.js"></script>
+    <!-- Vue组件-->
+    <link rel="stylesheet" href="../../css/vue_style.css"> <!-- 引入样式 -->
+    <script src="../../js/vue.min.js"></script><!-- 引入组件 -->
+    <script src="../../js/vant.min.js"></script><!-- 引入组件 -->
+
+    <!--自定义css 样式文件-->
+    <link rel="stylesheet" href="../../css/com_style.css" type="text/css">
+
+</head>
+<body>
+<div id="jni_app">
+
+
+    加载了Vue.js及其库的摸板
+    https://youzan.github.io/vant/#/zh-CN/sku
+
+
+
+</div>
+
+
+</body>
+<script language="javascript" type="text/javascript">
+
+    /**
+       Android默认调用的方法
+       用来初始化页面的数据
+     */
+    function showJson(vars) {
+        //TODO
+    };
+
+    /**
+     * vue 数据实体
+     * @type {{isShow: boolean}}
+     */
+    var data = {
+        isShow: false
+        //TODO
+
+    };
+
+    /**
+     * 方法对象，用来创建函数
+     *  属性以：name:fun 形式
+     *  如：setName:function () { }
+     */
+    var methods={
+        //TODO
+
+    }
+
+    /**
+     * JQuery 代码段
+     *    调用与js交互方法：
+     *       以  " com_ "  开头方法名
+     */
+    $(function () {
+        //TODO JQuery要做的事情
+
+    })
+
+</script>
+
+
+<script>
+    // 必须Vue实例化
+    var app = new Vue({
+        el: "#jni_app",
+        data: data,
+        filters: {},
+        methods: methods
+    });
+</script>
+
+</html>

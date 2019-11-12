@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>用电互动</title>
+
+    <meta name="viewport" content="width=device-width,height=device-height,initial-scale=1.0,
+     minimum-scale=1.0,maximum-scale=1.0, user-scalable=no">
+    <!--必须引入的组件-->
+    <script src="../js/bridgeproxy.js"></script>
+    <link rel="stylesheet" href="../css/reset.css" type="text/css">
+    <link rel="stylesheet" href="../css/layui.css" type="text/css">
+
+
+    <!--jquery 库-->
+    <script src="../js/jquery-3.2.1.min.js"></script>
+    <script src="../js/DynamicCalcPageSize.js"></script>
+    <!--自定义css 样式文件-->
+    <link rel="stylesheet" href="../css/com_style.css" type="text/css"/>
+    <!-- Vue组件-->
+    <link rel="stylesheet" href="../css/vue_style.css"> <!-- 引入样式 -->
+    <script src="../js/vue.min.js"></script><!-- 引入组件 -->
+    <script src="../js/vant.min.js"></script><!-- 引入组件 -->
+
+
+</head>
+<body>
+<div id="jni_app">
+    <div class="item_menu">
+        <span class="menu_jianyi active_menu_font">用能建议</span>
+        <span class="md_line ">|</span>
+        <span class="menu_tousu">窃电投诉</span>
+        <span class="md_line">|</span>
+        <span class="menu_fankui">意见反馈</span>
+    </div>
+    <div class="under_line">
+        <span class="active_1 active"></span>
+        <span class="active_2"></span>
+        <span class="active_3"></span>
+    </div>
+    <div class="content">
+        <div class="content_suggest">
+        </div>
+        <div class="content_complaint">
+            <div>
+                <span>投诉人</span><input v-model="data.complainted.complaintedUser" type="text" placeholder="请填写">
+            </div>
+            <div>
+                <span>联系方式</span><input type="text" v-model="data.complainted.phone" placeholder="请填写">
+            </div>
+            <div>
+                <span>窃电人</span><input type="text" v-model="data.complainted.qiedianRen" placeholder="请填写">
+            </div>
+            <div>
+                <span>窃电位置</span>
+                <van-icon class="location_icon" name="location-o"/>
+            </div>
+            <div class="description_msg">
+                <textarea v-model="data.complainted.descriptionMsg" placeholder="请详细描述你的投诉信息"></textarea>
+            </div>
+            <div class="upload_layout clearfix">
+                <ul class="complaint_ul">
+                    <li>
+                        <div class="img_position">
+                            <div class="position_icom">
+                                <img src="../img/aui_icon_plus.png">
+                                <span>照片</span>
+                            </div>
+                            <img class="img_pic">
+
+                        </div>
+                    </li>
+                    <li>
+                        <div class="img_position">
+                            <div class="position_icom">
+                                <img src="../img/aui_icon_plus.png">
+                                <span>照片</span>
+                            </div>
+                            <img class="img_pic">
+                        </div>
+                    </li>
+                    <li>
+                        <div class="img_position">
+                            <div class="position_icom">
+                                <img src="../img/aui_icon_plus.png">
+                                <span>照片</span>
+                            </div>
+                            <img class="img_pic">
+                        </div>
+                    </li>
+                    <li>
+                        <div class="img_position">
+                            <div class="position_icom">
+                                <img src="../img/aui_icon_plus.png">
+                                <span>照片</span>
+                            </div>
+                            <img class="img_pic">
+                        </div>
+                    </li>
+                    <li>
+                        <div class="img_position">
+                            <div class="position_icom">
+                                <img src="../img/aui_icon_plus.png">
+                                <span>照片</span>
+                            </div>
+                            <img class="img_pic">
+                        </div>
+                    </li>
+                </ul>
+                <span class="remind_msg">请提供相关问题的截图或照片最多上传5张</span>
+            </div>
+            <button type="button" class="complaint_submit layui-btn layui-btn-normal layui-btn-radius ">提交</button>
+        </div>
+        <div class="content_feedback">
+            <label class="feedback_option">
+                <van-row>
+                    <van-col span="8"><span>问题类型</span></van-col>
+                    <van-col span="6"></van-col>
+                    <van-col class="op" span="10">
+                        <div class="menu_option">
+                            <span v-for="item in data.feedback.defaluType">{{item}}</span>
+                        </div>
+                        <span v-model="data.feedback.questionType" class="select_option">{{data.feedback.defaluType[0]}}</span>
+                        <img class="option_icon" src="../img/arrow_down.png"/>
+
+                    </van-col>
+                </van-row>
+            </label>
+            <div class="description_msg">
+                <textarea v-model="data.feedback.description" placeholder="请详细描述你的问题或建议，我们将及时跟进解决"></textarea>
+                <span class="limit_input_len">0/360</span>
+            </div>
+            <div class="upload_layout clearfix">
+                <ul class="feedback_ul">
+                    <li>
+                        <div class="img_position">
+                            <div class="position_icom">
+                                <img src="../img/aui_icon_plus.png">
+                                <span>照片</span>
+                            </div>
+                            <img class="img_pic">
+
+                        </div>
+                    </li>
+                    <li>
+                        <div class="img_position">
+                            <div class="position_icom">
+                                <img src="../img/aui_icon_plus.png">
+                                <span>照片</span>
+                            </div>
+
+                        </div>
+                    </li>
+                    <li>
+                        <div class="img_position">
+                            <div class="position_icom">
+                                <img src="../img/aui_icon_plus.png">
+                                <span>照片</span>
+                            </div>
+                            <img class="img_pic">
+                        </div>
+                    </li>
+                    <li>
+                        <div class="img_position">
+                            <div class="position_icom">
+                                <img src="../img/aui_icon_plus.png">
+                                <span>照片</span>
+                            </div>
+                            <img class="img_pic">
+                        </div>
+                    </li>
+                    <li>
+                        <div class="img_position">
+                            <div class="position_icom">
+                                <img src="../img/aui_icon_plus.png">
+                                <span>照片</span>
+                            </div>
+                            <img class="img_pic">
+                        </div>
+                    </li>
+                </ul>
+                <span class="remind_msg">请提供相关问题的截图或照片最多上传5张</span>
+            </div>
+            <button type="button" id="feedback_submit"
+                    class="feedback_submit layui-btn layui-btn-normal layui-btn-radius ">提交
+            </button>
+        </div>
+    </div>
+
+
+</div>
+
+
+</body>
+
+
+<script language="javascript" type="text/javascript">
+
+    var maxLen = 200;//投诉信息最长输入字符数
+    var maxLenFeedback = 360;//投诉信息最长输入字符数
+    /**
+     Android默认调用的方法
+     用来初始化页面的数据
+     */
+    function showJson(vars) {
+        //TODO
+    }
+    ;
+
+    /**
+     * vue 数据实体
+     * @type {{isShow: boolean}}
+     */
+
+    var data = {
+        menu_id : 2,
+        d_arrow:"../img/arrow_down.png",
+        r_arrow:"../img/arrow_right.png",
+        complainted:{
+             complaintedUser:"",
+             phone:"",
+             qiedianRen:"",
+             location:{},
+             descriptionMsg:"",
+             image:[
+                {img:""},
+                {img:""},
+                {img:""},
+                {img:""},
+                {img:""}
+             ]
+        },
+        feedback:{
+            questionType:"",
+            defaluType:["问题类型1","问题类型2","问题类型3"],
+            description:"",
+            image:[
+                {img:""},
+                {img:""},
+                {img:""},
+                {img:""},
+                {img:""}
+            ]
+        },
+        suggest:{
+            data:[]
+        }
+        //TODO
+
+    };
+
+    /**
+     * 方法对象，用来创建函数
+     *  属性以：name:fun 形式
+     *  如：setName:function () { }
+     */
+    var methods = {
+        //TODO
+
+    }
+
+    var item_data = {
+       // data: ["每每提起笔，想诉说些，但发现自己的生活太单调了", "每每提起笔，想诉说些，但发现自己的生活太单调了", "　每每提起笔，想诉说些，但发现自己的生活太单调了"]
+        data: ""
+    };
+
+
+    /**
+     * JQuery 代码段
+     *    调用与js交互方法：
+     *       以  " com_ "  开头方法名
+     */
+
+    var menu_id = 0;//初始化菜单索引
+
+
+    /**
+     * 意见反馈 原生图片回调
+     */
+    var feedbackReDisplayUploadImgCaller = null;
+    /**
+     * 窃电信息 原生图片回调
+     */
+    var complaintedReDisplayUploadImgCaller = null;
+
+    function showImage(orgData) {
+        var data = js_StrToObj(orgData);
+        if (isEmpty(data)) {
+            com_ShowToast("图片回显失败"+orgData)
+            return;
+        } else {
+            var name = data.target;
+            var power_interaction =data.index;
+            var url =js_wrapperAndroidPathToH5Paht(data.url);
+            switch (name) {
+                case "feedback"://意见反馈
+                    feedbackReDisplayUploadImgCaller(power_interaction,url);
+                    data.feedback.image[power_interaction].img=data.url;
+                    break;
+                case "complainted"://投诉
+                    complaintedReDisplayUploadImgCaller(power_interaction,url);
+                    data.complainted.image[power_interaction].img=data.url;
+                    break;
+            }
+
+        }
+    }
+
+    $(function () {
+        //TODO JQuery要做的事情
+        var $jianyi = $(".menu_jianyi");
+        var $tousu = $(".menu_tousu");
+        var $fankui = $(".menu_fankui");
+
+        $jianyi.click(function () {
+            switch_menu(0);
+        });
+        $tousu.click(function () {
+            switch_menu(1);
+        });
+
+        $fankui.click(function () {
+            switch_menu(2);
+        });
+        switch_menu(data.menu_id);
+
+        //窃电位置回调
+        $(".location_icon").click(function () {
+            com_commCaller("location","坐标")
+        });
+
+        /*窃电投诉图片上传监听*/
+        $(".complaint_ul").delegate("li", "click", function () {
+            var $uploadIndex = $(this).index();
+            com_uploadImage("complainted",$uploadIndex);
+        });
+
+
+
+        /*意见反馈  图片上传监听*/
+        $(".feedback_ul").delegate("li", "click", function () {
+            var $uploadIndex = $(this).index();
+            com_uploadImage("feedback",$uploadIndex);
+        });
+
+        /*窃电投诉提交*/
+        $(".complaint_submit").click(function () {
+            //TODO
+            if (checkComplaintedInfo()){
+                com_submit(js_ObjToStr(data.complainted))
+            };
+            event.stopPropagation();
+        });
+
+        /*意见反馈提交*/
+        $("#feedback_submit").click(function () {
+            alert(com_check("1",""))
+            //TODO
+            if (checkFeedbackInfo()){
+                com_submit(js_ObjToStr(data.feedback))
+            };
+            event.stopPropagation();
+        });
+
+        var $option = $(".menu_option");
+        var $arrow = $(".option_icon");
+        $option.hide();
+
+
+        /*意见反馈下拉选项*/
+        $(".op").click(function () {
+            $option.fadeIn();
+            $arrow.attr("src",data.r_arrow)
+            event.stopPropagation();
+        });
+
+        $(".menu_option").children().click(function () {
+            $option.fadeOut();
+            $arrow.attr("src",data.d_arrow)
+            var $value = $(this).text();
+            event.stopPropagation()
+            $(".select_option").text($value)
+
+        });
+        /**
+         *  菜单切换
+         * @param position
+         */
+        function switch_menu(position) {
+            data.menu_id=position;
+            switch (position) {
+                case 0:
+                    menu_switch_finder($jianyi, $tousu, $fankui, "active_menu_font");
+                    break
+                case 1:
+                    menu_switch_finder($tousu, $jianyi, $fankui, "active_menu_font");
+                    break
+                case 2:
+                    menu_switch_finder($fankui, $jianyi, $tousu, "active_menu_font");
+                    break
+            }
+            var $select_line = $(".under_line").children().eq(position).addClass("active")
+            $(".under_line").children().not($select_line).removeClass("active")
+
+            var $content = $(".content").children().eq(position).show();
+            $(".content").children().not($content).hide();
+
+        }
+
+        /**
+         * 投诉建议长度显示
+         */
+        $(".content_complaint .description_msg").first().keyup(function () {
+            var $content = $(this).children().eq(0);
+            var len = $content.val().length;
+            if (len > maxLen) {
+                $content.val($content.val().substring(0, 20));
+            }
+        });
+
+        /**
+         * 意见反馈长度显示
+         */
+        $(".content_feedback .description_msg").first().keyup(function () {
+            var $content = $(this).children().eq(0);
+            var len = $content.val().length;
+            if (len > maxLenFeedback) {
+                $content.val($content.val().substring(0, maxLenFeedback));
+            }else {
+                var msg = (len) + "/" + maxLenFeedback;
+                $(".limit_input_len").text(msg)
+            }
+        });
+
+        /**
+         * 窃电投诉 上传图片后回显方法
+         * content_complaint
+         */
+        complaintedReDisplayUploadImgCaller = function complainedReDisplayUploadImg(power_interaction, url) {
+            /*var obj = eval(data);
+             var url = obj.url;
+             var index = parseInt(obj.index);*/
+            var $target = $(".content_complaint").find("ul").find("li").eq(power_interaction);
+            $target.find("div.position_icom").hide();
+            $target.find("img").attr("src", url).fadeIn()
+        }
+
+        /**
+         * 意见反馈 上传图片后回显方法
+         */
+        feedbackReDisplayUploadImgCaller = function feedbackReDisplayUploadImg(power_interaction, url) {
+            //var url = "https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=386614189,254027626&fm=26&gp=0.jpg";
+            var $target = $(".content_feedback").find("ul").find("li").eq(power_interaction);
+            $target.find("div.position_icom").hide();
+            $target.find("img").attr("src", url).fadeIn()
+            event.stopPropagation();
+        }
+
+        function menu_switch_finder(add_menu_1, menu_2, menu_3, class_name) {
+            addToClass(add_menu_1, class_name);
+            removeToClass(menu_2, class_name);
+            removeToClass(menu_3, class_name);
+        }
+
+
+        function addToClass(targe, className) {
+            targe.addClass(className);
+        }
+
+        function removeToClass(targe, className) {
+            targe.removeClass(className);
+        }
+
+        loadSuggestDate(item_data.data)
+
+        function loadSuggestDate(data) {
+            var $content = $(".content_suggest");
+            $content.empty();
+            if (!isEmpty(data)) {
+                var size = 0;
+                for (; size < data.length; size++) {
+                    var $txt = $("<div></div>").text(data[size]);
+                    $(".content_suggest").append($txt)
+                }
+                $content.delegate("div","click",function () {
+                    var  $index=$(this).index();
+                    var $showData=item_data.data[parseInt($index)];
+                    com_commCaller("suggest",$index);
+                })
+
+            } else {
+                var $txt = $("<span>暂无数据</span>");
+                $txt.addClass("emptyMsg");
+                $content.append($txt)
+                console.log("空数据" + data)
+            }
+        };
+
+
+        function checkFeedbackInfo() {
+            if (isEmpty(data.feedback.questionType)){
+                com_ShowToast("请选择问题类型");
+                return false;
+            };
+            if (isEmpty(data.feedback.description)){
+                com_ShowToast("请填写描述信息");
+                return false;
+            };
+
+            for (m in data.complainted.image){
+                if (isEmpty(m.img)){
+                    com_ShowToast("请上传相关问题图片");
+                    return false;
+                };
+            };
+            return true;
+        };
+
+
+        function checkComplaintedInfo() {
+            if (isEmpty(data.complainted.complaintedUser)){
+                com_ShowToast("请填写投诉人");
+                return false;
+            };
+            if (isEmpty(data.complainted.phone)){
+                com_ShowToast("请填写联系方式");
+                return false;
+            };
+            if (isEmpty(data.complainted.qiedianRen)){
+                com_ShowToast("请填写窃电人");
+                return false;
+            };
+            if (isEmpty(data.complainted.location)){
+                /*return;*/
+            };
+
+            if (isEmpty(data.complainted.descriptionMsg)){
+                com_ShowToast("请填写描述信息");
+                return false;
+            };
+            for (m in data.complainted.image){
+                if (isEmpty(m.img)){
+                    com_ShowToast("请上传相关问题图片");
+                    return false;
+                };
+            };
+
+            return true;
+        };
+
+
+        function testConfig() {
+            switch_menu(1);
+        }
+
+        //testConfig();
+    })
+
+
+</script>
+<script>
+    // 必须Vue实例化
+    var app = new Vue({
+        el: "#jni_app",
+        data: data,
+        filters: {},
+        methods: methods
+    });
+</script>
+
+
+</html>

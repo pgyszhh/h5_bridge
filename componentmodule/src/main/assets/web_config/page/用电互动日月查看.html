@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>用电互动</title>
+    <meta name="viewport" content="width=device-width,height=device-height,initial-scale=1.0,
+     minimum-scale=1.0,maximum-scale=1.0, user-scalable=no">
+    <!--必须引入的组件-->
+    <script src="../js/bridgeproxy.js"></script>
+    <link rel="stylesheet" href="../css/reset.css" type="text/css">
+    <link rel="stylesheet" href="../css/yeaar_day_style.css" type="text/css">
+    <!--jquery 库-->
+    <script src="../js/jquery-3.2.1.min.js"></script>
+
+
+</head>
+<body>
+<div class="menu_option">
+    <span class="day active">日</span>
+    <span class="month un_active">月</span>
+</div>
+<div class="content">
+    <div class="date_layout clearfix">
+        <ul class="date_option">
+        </ul>
+        <div class="select_line"><span></span></div>
+    </div>
+</div>
+
+<div class="content_layout">
+    <ul class="clearfix">
+        <li>
+            <ul class="title fl">
+                <li>电器</li>
+                <li>用电量(kWh)</li>
+                <li>占比(%)</li>
+                <li>排名</li>
+            </ul>
+        </li>
+    </ul>
+</div>
+</body>
+<script type="text/javascript">
+    /**
+     Android默认调用的方法
+     用来初始化页面的数据
+     */
+    function showJson(vars) {
+        com_ShowToast("开始加载数据")
+    }
+    ;
+
+
+    /**
+     * 菜单位置
+     */
+    var menu_tag=0;
+    var data_list = {
+        item: []
+    };
+
+    var item_list = {
+        item_list: []
+    };
+
+
+    var loadDayDatas = null;
+    /*加载天的函数*/
+    var loadMonthDatas = null;
+    /*加载月的函数*/
+
+    function test() {
+        data_list.item.length = 0;
+        for (var i = 10; i <= 14; i++) {
+            data_list.item.push(i + "日")
+        }
+
+
+        item_list.item_list.length = 0;
+        for (var i = 0; i <10; i++) {
+            var data = {};
+            data.elecApp = "电风扇" + i;
+            data.elecQuantity = (Math.random() * 200).toFixed(1);
+            data.elecProportion = (Math.random() * 100).toFixed(1);
+            data.elecRanking = (Math.random() * 10).toFixed(1);
+            item_list.item_list.push(data);
+        }
+        console.log(item_list);
+
+    }
+
+    test();
+    /**
+     * 菜单切换
+     */
+    $(function () {
+        /**
+         * 日期切换
+         */
+        $(".menu_option").delegate("span", "click", function () {
+            $(this).removeClass("un_active").addClass("active");
+            $(this).siblings().removeClass("active").addClass("un_active")
+            var $menu = $(this).attr("class").split(" ");
+            switch ($menu[0]) {
+                case "day":
+                    menu_tag=0;
+                    swithDay($(this).val());
+                    break;
+                case "month":
+                    menu_tag=0;
+                    swithMonth($(this).val());
+                    break
+            }
+        });
+
+        /*初始化日期布局*/
+        function initDates() {
+            var $dataItem = $(".date_option");
+            for (var i = 0; i < data_list.item.length; i++) {
+                //console.log(i)
+                var $data = $("<li></li>").text(data_list.item[i]);
+                $data.attr("my_index", i);
+                if (i != data_list.item.length - 1) {
+                    $data.addClass("middle_div");
+                }
+                com_uploadImage()
+                $dataItem.append($data);
+            }
+        }
+
+        initDates();
+
+        //日期按钮
+        $(".date_option").delegate("li", "click", function () {
+            var $item = $(this);
+            $item.siblings().removeClass("active_font")
+            $item.addClass("active_font")
+            var index = $item.attr("my_index");
+            var pos = parseFloat($item.css("width")) * index;
+            //console.log(data_list.item)
+            // alert($item.index())
+            date_selector($item.text());
+            $(".select_line span").css("left", pos)
+        });
+
+        loadDayDatas = function () {
+
+        };
+
+        loadMonthDatas = function () {
+            var $rootUl = $(".content_layout ul");
+            //$rootUl.children().eq(0).siblings().remove();
+            if (item_list.item_list.length==0){
+                var $ul_li = $("<li class='empty'>暂无数据</li>");
+
+
+                $(".content_layout").append($ul_li);
+            }else {
+                for (var key = 0; key < item_list.item_list.length; key++) {
+                    var i_data = item_list.item_list[key]
+                    var $ul_li = $("<li></li>");
+                    var $ul_list = $("<ul></ul>");
+                    $ul_list.append($("<li></li>").text(i_data.elecApp));
+                    $ul_list.append($("<li></li>").append($("<span ></span>").css("color","#3FA5FA").text(i_data.elecQuantity)));
+                    $ul_list.append($("<li></li>").text(i_data.elecProportion));
+                    $ul_list.append($("<li></li>").text(i_data.elecRanking));
+
+                    $ul_li.append($ul_list);
+                    $rootUl.children().eq(0).append($ul_li);
+                }
+            }
+        }
+
+    });
+
+    /**
+     * 切换日
+     */
+    function swithDay(day) {
+        com_commCaller("day","dddd")
+    }
+
+
+    /**
+     * 切换月
+     */
+    function swithMonth(month) {
+        com_commCaller("month",month)
+    }
+
+    //日期选择
+    function date_selector(data) {
+        switch (menu_tag){
+            case 0: //按日 下的日期切换
+                com_commCaller("day",data)
+                break
+            case 1://按月 下的日期切换
+                com_commCaller("month",data)
+                break
+        }
+    }
+
+</script>
+</html>

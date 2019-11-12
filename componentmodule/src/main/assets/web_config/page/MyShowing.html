@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../js/jquery-3.2.1.min.js"></script>
+    <script src="../js/DynamicCalcPageSize.js"></script>
+    <style type="text/css">
+        * {
+            font-size: 20px;
+            color: darkslategray;
+        }
+
+        button {
+            display: inline-block;
+            width: 160px;
+            margin-bottom: 10px;
+            font-size: 14px;
+        }
+    </style>
+    <script>
+        var wms = null;
+        $(function () {
+            wms = $(".ls");
+            $(".ts").click(function () {
+                com_ShowToast("吐司测试")
+            });
+            $(".upload").click(function () {
+                com_submit("upload", 100)
+            });
+            $(".gtbl").click(function () {
+                var getBl = com_check("获取检测值：", 121212);
+                com_ShowToast("获取到的值：" + getBl)
+                wms.text(getBl);
+            });
+            $(".getvalue").click(function () {
+
+                var ms = com_appValueFromJava("来自H5标签", "110");
+                com_ShowToast("获取到的值：" + ms);
+                wms.text(ms);
+            });
+            $(".sub").click(function () {
+                com_submit("来自H5提交标签", "提交数据");
+            });
+            $(".comm_call").click(function () {
+                com_commCaller("来自H5通用提交方法标签：", "提交数据.....")
+            });
+            $(".comm_call_no_arg").click(function () {
+                com_commCallerNoArgs("来自H5通用无参数提交方法标签")
+            });
+            $(".show_window").click(function () {
+                com_ShowToast("回调窗口");
+                com_ShowWindow("来自H5", "春天一到，天南地北到处都生长着路边的小草，依赖着草根，春草无处不绵延生长。可茂盛的春草总要催人回家，春风吹绿小草又过了一年了！诗人借着春草又绿，抒发自己久在客外地强烈的思归情绪。")
+            });
+            $(".zc").click(function () {
+                wms.text("调用到了 H5 " + myTest(15));
+            });
+
+            $(".csbm").click(function () {
+                com_commCaller("1","测试别名");
+            });
+
+            $(".csgjl").click(function () {
+                com_commCaller("2","这个是测试回调");
+            });
+
+            $(".cskjhd").click(function () {
+                com_commCaller("3","测试工具");
+            });
+
+            $(".csgb").click(function () {
+                com_closeActivity();
+            }); $(".csgb").click(function () {
+                com_closeActivity();
+            });
+
+
+        });
+
+        bridegCarry.bridgeTag
+
+        function myTest(vl) {
+            wms.text("调用到了 H5 " + vl);
+            return 4545435435;
+        }
+
+        function MyTestYes(reselt) {
+            com_ShowToast("这是什么鬼:" + reselt);
+            return "";
+        }
+
+    </script>
+</head>
+<body background="#00F7DE">
+<h3>这是测试页面</h3>
+<div class="ls"></div>
+<button class="ts">吐司</button>
+<br>
+<button class="upload">图片上传</button>
+<br>
+<button class="gtbl">获取java bool返回值</button>
+<br>
+<button class="getvalue">获取java 普通返回值</button>
+<br>
+<button class="sub">提交</button>
+<br>
+<button class="comm_call">通用回调</button>
+<br>
+<button class="comm_call_no_arg">通用无参数回调</button>
+<br>
+<button class="show_window">展示窗口回调</button>
+<br>
+<button class="zc">自测</button>
+<br>
+<button class="csbm">测试默认别名</button>
+<br>
+<button class="csgjl">测试工具类回调</button>
+<br>
+<button class="cskjhd">测试测试框架回调</button>
+<button class="csgb">测试关闭</button>
+<br>
+
+</body>
+</html>

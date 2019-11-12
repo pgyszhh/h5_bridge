@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../js/jquery-3.2.1.min.js"></script>
+    <script>
+        window.onload = function () {
+            $(function () {
+                $("button").click(function () {
+                   com_commCaller("1","什么什么")
+                });
+            });
+        };
+
+        function test(le) {
+            com_ShowToast("这是什么鬼，被掉到了....."+le)
+            return "只是返回参数"+le;
+        }
+    </script>
+</head>
+<style type="text/css">
+    button{
+        display: inline-block;
+    }
+</style>
+<body>
+<h1>测试</h1>
+<button>测试</button>
+</body>
+</html>

@@ -1,0 +1,367 @@
+@charset "uttf-8";
+
+body {
+    background: #F4F4F6;
+}
+/*隐藏滚动条*/
+#jni_app::-webkit-scrollbar {
+    display: none;
+}
+/*设置提示信息颜色*/
+textarea::-webkit-input-placeholder {
+    /* WebKit browsers */
+    color: #B9B9BA;
+}
+
+.item_menu {
+    padding-top: 0.3rem;
+    padding-bottom: 0.3rem;
+    border: 0rem;
+    font-size: 0;
+    background: white;
+
+}
+
+.item_menu span {
+    text-align: center;
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+    font-size: 0.8rem;
+
+}
+
+.item_menu .menu_fankui, .menu_jianyi, .menu_tousu {
+    width: 32%;
+}
+
+.item_menu .md_line {
+    width: 2%;
+    color: gray;;
+}
+
+/*下划线*/
+.under_line {
+    background: #E1E1E1;
+    height: 0.1rem;
+    font-size: 0rem;
+}
+
+.under_line span {
+    display: inline-block;
+    width: 33.33%;
+    height: 100%;
+}
+
+.active {
+    background: #3FA5F7;
+}
+
+.active_menu_font {
+    color: #3FA5F7;
+}
+
+/*内容*/
+
+.content {
+    color: gray;;
+}
+
+.content .content_suggest {
+    background: white;
+
+}
+
+.content .content_complaint {
+    margin-top: 0.6rem;
+    display: none;
+    height: 10rem;
+}
+
+.content .content_feedback {
+    margin-top: 0.6rem;
+    display: none;
+    height: 10rem;
+}
+
+/*通用字体大小设置*/
+.content div {
+    font-size: 0.7rem;
+    color: #000;
+}
+
+/*条目内容*/
+.content_suggest div, .content_complaint div, .content_feedback div {
+    background: white;
+    padding: 0.5rem;
+    border-bottom: 0.01rem solid #E1E1E1;
+}
+
+
+
+
+/*窃电投诉 输入框*/
+.content_complaint div input {
+    display: inline-block;
+    float: right;
+    text-align: right;
+    line-height: 0.8rem;
+    font-size: 0.7rem;
+    margin-right: 0rem;
+    padding-right: 0.7rem;
+    background: #ffffff;
+    border: 0rem;
+}
+
+/*投诉信息描述布局*/
+.content_complaint .description_msg ,.content_feedback .description_msg  {
+    margin-top: 0.3rem;
+    margin-bottom: 0.3rem;
+    background: white;
+}
+
+.content_feedback .description_msg {
+    position: relative;
+}
+
+.limit_input_len{
+    position: relative;
+    margin-left: 12rem;
+    display: block;
+    color:#B9B9BA ;
+    margin-top: -1.2rem;
+}
+
+
+
+.content_complaint .description_msg textarea {
+    background: #F4F4F6;
+    border: 0.03rem gray solid;
+    padding: 0.3rem;
+    maxlength: 20;
+    font-size: 0.7rem;
+    width: calc(100% - 1rem);
+    height: 4rem;
+    border-radius: 0.2rem;
+    padding: 0.1rem;
+}
+
+.content_feedback .description_msg textarea {
+    background: #F4F4F6;
+    border: 0.03rem gray solid;
+    padding: 0.3rem;
+    maxlength: 20;
+    font-size: 0.7rem;
+    width: calc(100% - 1rem);
+    height: 5rem;
+    border-radius: 0.2rem;
+}
+
+
+/*窃电位置图标*/
+.content_complaint .location_icon ,.content_feedback .location_icon{
+    float: right;
+    padding: 0.3rem;
+    width: 2rem;
+    text-align: center;
+    line-height: 0.8rem;
+    margin-top: -0.3rem;
+}
+
+/*窃电投诉图片上传布局*/
+.upload_layout {
+    float: left;
+    width: calc(100% - 1rem);
+}
+
+.upload_layout ul li {
+    border: 0rem;
+    float: left;
+    display: inline-block;
+    background: white;
+    width: 33.33%;
+
+}
+
+.upload_layout ul li .img_position {
+    text-align: center;
+    margin: 0.4rem auto;
+    padding: 0rem;
+    color: gray;
+    font-size: 0.7rem;
+    border: 0rem;
+    width: 4rem;
+    height: 4rem;
+    border: 0.02rem gray solid;
+}
+
+.upload_layout ul li .img_position img {
+    margin-top: 0.7rem;
+    background: white;
+    width: 1.2rem;
+    width: 1.2rem;
+    font-size: 1rem;
+    line-height: 0.8rem;
+    color: gainsboro;
+}
+
+.upload_layout ul li .img_position div span {
+    display: block;
+    margin-top: 0.2rem;
+    line-height: 0.8rem;
+    font-size: 0.5rem;
+    color: gainsboro;
+}
+
+.upload_layout ul li .img_position div {
+    border: 0rem;
+/*    width: 2.98rem;
+    height:2.98rem;
+    margin: 0.02rem;*/
+    display: inline-block;
+    margin: 0.05rem;
+}
+
+.upload_layout ul {
+    border: 0rem;
+}
+
+.remind_msg {
+    text-align: right;
+    padding-top: 0.5rem;
+    padding-bottom: 0.3rem;
+    float: right;
+    width: 100%;
+    font-size: 0.5rem;
+    line-height: 0.5rem;
+    border: 0rem;
+    background: white;
+    color: #3FA5FA;
+}
+
+/*图片大小*/
+.upload_layout ul li .img_position .img_pic{
+    display: none;
+    float: left;
+    width: 3.96rem;
+    height: 3.96rem;
+    padding: 0.02rem;
+    margin-top: 0.02rem;
+}
+/*提交按钮*/
+
+.btn_space{
+    border: 0rem;
+    background: red;
+    overflow: hidden;
+
+}
+.complaint_submit,.feedback_submit{
+    display: inline-block;
+    width: 90%;
+    margin: 1rem 0.5rem;
+    font-size: 0.7rem;
+    height: 2rem;
+}
+
+/*
+-------------意见反馈------------------------------
+*/
+
+
+
+.content_feedback .select_option_layout{
+    display: inline-block;
+    background: lightcoral;
+    margin: 0rem 0rem;
+}
+
+.content_feedback label{
+    border-bottom: 0.00rem solid #FFFFFF;
+    display: block;
+    margin: 0rem;
+    background: white;
+    padding-top: 0.2rem;
+    padding-bottom: 0.2rem;
+    margin-bottom: 0.5rem;
+    position: relative;
+}
+
+.content_feedback label div{
+    text-align: center;
+    padding: 0.1rem ;
+    border: 0rem;
+    background: white;
+    text-align: center;
+    font-size: 0rem;
+}
+
+.content_feedback label div span{
+    font-size: 0.7rem;
+}
+
+.content_feedback label div .option_icon{
+    margin-left: 0rem;
+    margin: 0rem;
+    width: 0.8rem;
+    height: 0.9rem;
+    font-size: 0.7rem;
+    color: gray;
+    margin-top: -0.4rem;
+    margin-left: 0.2rem;
+}
+
+.menu_option {
+    position: absolute;
+    background-color:gainsboro;
+    min-width: 4rem;
+    margin-left: 1rem;
+    min-height: 2rem;
+    margin-top: 1.1rem;
+    font-size: 0.7rem;
+    text-align: left;
+    text-align: right;
+    z-index: 999;
+
+}
+
+
+.show_lisg{
+    display: block;
+}
+
+.content_feedback label div .op div{
+    font-size: 0.8rem;
+    background: white;
+    color: black;
+}
+
+
+.content_feedback label div .op .menu_option  span{
+    color: black;
+    text-align: right;
+    display: block;
+    font-size: 0.8rem;
+    background: white;
+    padding: 0.2rem 0.5rem;
+    margin-top: 0.01rem;
+    margin-bottom: 0.005rem;
+    border-top: 0.01rem solid ghostwhite;
+}
+
+.emptyMsg{
+    margin-top: 5rem;
+    font-size: 0.8rem;
+    color: black;
+    text-align: center;
+    background: #F4F4F6;
+    display: block;
+}
+
+
+
+
+
+
+
+

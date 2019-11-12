@@ -1,0 +1,156 @@
+@charset "uttf-8";
+
+body {
+    background: #F4F4F6;
+    font-size: 0.7rem;
+}
+
+.menu_option{
+    text-align: center;
+    font-size: 0rem;
+    background: #3FA5FA;
+}
+.menu_option span{
+    font-size: 0.6rem;
+    display: inline-block;
+    width: 45%;
+    padding-top: 0.3rem;
+    font-weight: bold;
+    padding-bottom: 0.3rem;
+    border: 0.05rem solid white;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.menu_option .day{
+    border-radius: 0.3rem 0rem 0rem 0.3rem ;
+}
+
+.menu_option .month{
+    border-radius: 0rem 0.3rem 0.3rem 0rem ;
+}
+
+.un_active{
+    color: white;
+    background: #3FA5FA;
+}
+
+
+.active{
+    background: white;
+    color: #3FA5FA;
+}
+
+.contents{
+    width: 100%;
+    height: 5rem;
+    padding: 0.5rem 5%;
+}
+
+/*日期选择*/
+.date_layout{
+    width: 100%;
+    text-align: center;
+    margin: 0rem auto;
+    overflow: auto;
+    font-size: 0rem;
+}
+
+
+.date_layout  .date_option{
+    margin: 0rem auto;
+    display: inline-block;
+    width: 100%/*calc(5*(100% * (1/4)))*/;
+    overflow: auto;
+    background: white;
+    padding-top: 0.6rem;
+    padding-bottom: 0.3rem;
+    padding-left: 0.01rem;
+
+}
+.date_option li {
+    display: inline-block;
+    float: left;
+    width: calc(20% - 0.05rem);
+    font-size: 0.6rem;
+    padding: 0rem;
+    margin: 0rem;
+    background: white;
+}
+
+.middle_div{
+    border-right: 0.01rem gray solid;
+}
+
+/*日期选择下划线*/
+.select_line{
+    height: 0.1rem;
+    background: white;
+    width: 100%;
+    margin: 0rem;
+    padding: 0rem;
+    color: black;
+    position: absolute;
+}
+
+.select_line span{
+    display: inline-block;
+    background: #3FA5FA;
+    width: 20%;
+    height: 0.1rem;
+    position: absolute;
+    left:0.02rem;
+}
+
+.active_font{
+    color: #3FA5FA;
+}
+
+/*内容布局*/
+.content_layout{
+    background: white;
+    margin-top: 0.5rem;
+    padding:  0rem;
+}
+
+.content_layout ul {
+    display: block;
+    background: white;
+}
+.content_layout ul li ul{
+    font-size: 0.5rem;
+    color: black;
+}
+.content_layout ul li ul {
+    display: block;
+    width: 100%;
+    font-size: 0rem;
+    margin: 0rem;
+    text-align: center;
+}
+
+.content_layout ul li ul li{
+    background:white;
+    width: calc(25% - 0.04rem);
+    border-bottom: 0.01rem solid #F3F3F3;
+    font-size: 0.7rem;
+    display: inline-block;
+    padding-top: 0.7rem;
+    font-size: 0.5rem;
+    padding-bottom: 0.7rem;
+}
+
+
+.empty{
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+    font-size: 0.8rem;
+    color: black;
+    text-align: center;
+    background: #F4F4F6;
+    display: block;
+}
+
+
+
+

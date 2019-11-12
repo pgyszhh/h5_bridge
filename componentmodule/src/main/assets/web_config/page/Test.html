@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="../css/reset.css">
+<!--    <script src="../js/bridgeproxy.js"></script>-->
+    <script src="../js/DateUtils.js"></script>
+    <script src="../test/myUtils.js"></script>
+   // <script src="../js/bridgeproxy.js"></script>
+    <!-- <script>bridgeproxy.init();</script>-->
+    <script src="../js/jquery-3.2.1.min.js"></script>
+    <style type="text/css">
+        body {
+            font-size: 0.3rem;
+        }
+
+        .box_1 {
+            background: grey;
+            width: 100%;
+            height: 100px;
+            overflow: auto;
+        }
+    </style>
+    <script>
+
+        $(function () {
+            $(".ts").click(function () {
+
+                /*$("p").text("11111111111111");
+                $("p").text("状态："+isEmpty(bridegCarry.java_bridgeTag));*/
+               // com_Caller("1","测试");
+              /*  var ts="true";
+                var ss=testParse(ts)
+                var rs ="参数值:"+ts+"          类型："+typeof (ts)+"\n数值: "+ss+"  新类型"+typeof (ss);
+                alert(rs)*/
+                com_commCaller("1","测试");
+               // com_ShowToast("主程序调用")
+            });
+            $(".cm").click(function () {
+                $("p").text("2222222222");
+                com_commCaller("哈哈哈","这是测试字段")
+
+            });
+
+            $(".bk").click(function () {
+                $("p").text("3333333333333333");
+               var v= com_appValueFromJava("Main","454545")
+                $("p").text(v);
+            });
+        });
+
+
+        function Shows(val) {
+            com_ShowToast("参数值:"+val+"\n类型："+typeof (val))
+            return false;
+        }
+
+
+
+
+       /* var ls=new Boolean(m);
+        if (ls){
+            alert("成功")
+        }else {
+            alert("失败了")
+        }*/
+
+
+    </script>
+
+</head>
+<body>
+
+
+<div class="box_1">
+    <p></p>
+    <button class="ts">吐司</button>
+    <br>
+    <button class="cm">通用掉</button><br><br>
+    <button class="bk">通用掉</button>
+</div>
+<button onclick="show()">tett</button>
+</body>
+</html>
